@@ -1,8 +1,4 @@
-on: 
-  push:
-    branches: [main]
-  workflow_dispatch:
-    branches: [main]
+on: [push, workflow_dispatch]
 jobs:
   aws_cdk:
     runs-on: ubuntu-latest
