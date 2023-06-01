@@ -8,14 +8,11 @@ FROM public.ecr.aws/lambda/python:3.8
 #     apt install -y python3 python3-dev python3-pip gcc
     # rm -Rf /var/cache/apt
 # Be sure to copy over the function itself!
-COPY example_docker_lambda.py ${LAMBDA_TASK_ROOT}
+COPY example_docker_lambda.py ./
 # Copies requirements.txt file into the container
 COPY requirements.txt ./
 # Installs dependencies found in your requirements.txt file
-RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
-RUN pip uninstall urllib3
-RUN pip install 'urllib3<2.0'
-
+RUN pip install -r requirements.txt
 
 # Allow for caching python modules
 # VOLUME ["/.venv/lib/python3.10/site-packages/"]
