@@ -13,6 +13,9 @@ COPY example_docker_lambda.py ${LAMBDA_TASK_ROOT}
 COPY requirements.txt ./
 # Installs dependencies found in your requirements.txt file
 RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+RUN pip uninstall urllib3
+RUN pip install 'urllib3<2.0'
+
 
 # Allow for caching python modules
 # VOLUME ["/.venv/lib/python3.10/site-packages/"]
