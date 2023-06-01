@@ -25,8 +25,15 @@ jobs:
       #   run: cdk synth
       # - name: Deploy stack
       #   run: cdk deploy --all --require-approval never
-      - name: cdk diff
+      # - name: cdk diff
+      #   uses: youyo/aws-cdk-github-actions@v2
+      #   with:
+      #     cdk_subcommand: 'diff'
+      #     actions_comment: true
+      - name: cdk deploy
         uses: youyo/aws-cdk-github-actions@v2
         with:
-          cdk_subcommand: 'diff'
-          actions_comment: true
+          cdk_subcommand: 'deploy'
+          cdk_stack: 'stack1'
+          cdk_args: '--require-approval never'
+          actions_comment: false
